@@ -1,0 +1,48 @@
+train:
+  seed: 42
+  model_output_dir: models
+  model_counter_prefix: model_
+  lambdas:
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  normalization:
+    profit_scale: 2000.0
+    emission_scale: 1000.0
+  constraints:
+    capacity_total: 100.0
+    labor_limit: 150.0
+    min_x: 20.0
+    min_y: 10.0
+    max_x: 80.0
+    budget_limit: 800.0
+    budget_x_coeff: 10.0
+    budget_y_coeff: 8.0
+  optimizer:
+    learning_rate: 0.08
+    beta1: 0.9
+    beta2: 0.999
+    eps: 1.0e-08
+    steps: 2500
+    penalty_rho: 120.0
+    feasible_tolerance: 1.0e-05
+    x0: 30.0
+    y0: 20.0
+    clip_min: 0.0
+    clip_max: 200.0
+    log_every: 250
+model:
+  project_name: economic_multiobjective_optim
+  method: weighted_sum_with_adam
+  variables:
+  - x
+  - y
+  objectives:
+    profit: maximize
+    environmental_cost: minimize

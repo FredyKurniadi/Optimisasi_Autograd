@@ -1,0 +1,8 @@
+project_name: "economic_multiobjective_optim"
+method: "weighted_sum_with_adam"
+variables:
+  - x
+  - y
+objectives:
+  profit: "maximize"
+  environmental_cost: "minimize"
